@@ -45,6 +45,21 @@ const App = () => {
 		}
 	};
 	
+	// melakukan DELETE dengan Axios
+	const deletePost = async (id) => {
+		try {
+			await client.delete(`${id}`);
+			setPosts(
+				posts.filter((post) => {
+					return post.id !== id;
+				})
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	
 	return (
 		<div className="app">
 			<nav>
