@@ -30,6 +30,21 @@ const App = () => {
 		fetchPost();
 	}, []);
 	
+	// Melakukan POST dengan Axios
+	const addPosts = async (title, body) => {
+		try {
+			let response = await client.post('', {
+				title: title,
+				body: body,
+			});
+			setPosts([response.data, ...posts]);
+			setTitle('');
+			setBody('');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	
 	return (
 		<div className="app">
 			<nav>
