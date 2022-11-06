@@ -16,11 +16,20 @@ const App = () => {
 		e.preventDefault();
 		addPosts(title, body);
 	};
-
 	
-
-
-
+	// melakukan GET dengan Axios
+	useEffect(() => {
+		const fetchPost = async () => {
+			try {
+				let response = await client.get('?_limit=10');
+				setPosts(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchPost();
+	}, []);
+	
 	return (
 		<div className="app">
 			<nav>
